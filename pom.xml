@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.esotericsoftware.yamlbeans</groupId>
             <artifactId>yamlbeans</artifactId>
-            <version>1.06</version>
+            <version>1.15</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
