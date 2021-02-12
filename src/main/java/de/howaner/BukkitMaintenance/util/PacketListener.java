@@ -25,7 +25,7 @@ public class PacketListener extends Thread {
         packets[0xFF] = Packet255Disconnect.class;
     }
 
-    private MainServer server;
+    private final MainServer server;
 
     public PacketListener(MainServer server) {
         this.server = server;

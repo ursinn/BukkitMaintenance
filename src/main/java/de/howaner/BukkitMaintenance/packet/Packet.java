@@ -4,7 +4,6 @@ import de.howaner.BukkitMaintenance.util.Varint;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public abstract class Packet {
