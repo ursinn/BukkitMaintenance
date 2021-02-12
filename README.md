@@ -1,5 +1,4 @@
-BukkitMaintenance
-=================
+# BukkitMaintenance
 
 [![Build Status Travis Master](https://img.shields.io/travis/com/ursinn/BukkitMaintenance/master?logo=travis&label=build%20master)](https://travis-ci.com/ursinn/BukkitMaintenance)
 [![Build Status Travis Develop](https://img.shields.io/travis/com/ursinn/BukkitMaintenance/develop?logo=travis&label=build%20develop)](https://travis-ci.com/ursinn/BukkitMaintenance)
