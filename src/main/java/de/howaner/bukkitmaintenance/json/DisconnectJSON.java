@@ -1,4 +1,4 @@
-package de.howaner.BukkitMaintenance.json;
+package de.howaner.bukkitmaintenance.json;
 
 /**
  * Disconnect JSON Format in 1.7

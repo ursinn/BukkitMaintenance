@@ -1,9 +1,9 @@
-package de.howaner.BukkitMaintenance;
+package de.howaner.bukkitmaintenance;
 
 import com.google.gson.Gson;
-import de.howaner.BukkitMaintenance.config.Config;
-import de.howaner.BukkitMaintenance.util.ImageUtils;
-import de.howaner.BukkitMaintenance.util.PacketListener;
+import de.howaner.bukkitmaintenance.config.Config;
+import de.howaner.bukkitmaintenance.util.ImageUtils;
+import de.howaner.bukkitmaintenance.util.PacketListener;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

@@ -1,4 +1,4 @@
-package de.howaner.BukkitMaintenance.util;
+package de.howaner.bukkitmaintenance.util;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

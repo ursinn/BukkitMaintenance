@@ -1,4 +1,4 @@
-package de.howaner.BukkitMaintenance.json;
+package de.howaner.bukkitmaintenance.json;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package de.howaner.BukkitMaintenance.util;
+package de.howaner.bukkitmaintenance.util;
 
-import de.howaner.BukkitMaintenance.MainServer;
-import de.howaner.BukkitMaintenance.config.Config;
-import de.howaner.BukkitMaintenance.json.DisconnectJSON;
-import de.howaner.BukkitMaintenance.json.StatusResponseJSON;
-import de.howaner.BukkitMaintenance.packet.*;
+import de.howaner.bukkitmaintenance.MainServer;
+import de.howaner.bukkitmaintenance.config.Config;
+import de.howaner.bukkitmaintenance.json.DisconnectJSON;
+import de.howaner.bukkitmaintenance.json.StatusResponseJSON;
+import de.howaner.bukkitmaintenance.packet.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;

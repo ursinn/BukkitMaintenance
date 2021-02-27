@@ -1,4 +1,4 @@
-package de.howaner.BukkitMaintenance.config;
+package de.howaner.bukkitmaintenance.config;
 
 import com.esotericsoftware.yamlbeans.YamlReader;
 import com.esotericsoftware.yamlbeans.YamlWriter;

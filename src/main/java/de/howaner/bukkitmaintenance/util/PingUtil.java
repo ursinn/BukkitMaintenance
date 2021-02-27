@@ -1,4 +1,4 @@
-package de.howaner.BukkitMaintenance.util;
+package de.howaner.bukkitmaintenance.util;
 
 public class PingUtil {
 

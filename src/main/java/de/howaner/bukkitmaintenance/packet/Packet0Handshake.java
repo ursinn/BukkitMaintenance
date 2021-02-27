@@ -1,6 +1,6 @@
-package de.howaner.BukkitMaintenance.packet;
+package de.howaner.bukkitmaintenance.packet;
 
-import de.howaner.BukkitMaintenance.util.Varint;
+import de.howaner.bukkitmaintenance.util.Varint;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

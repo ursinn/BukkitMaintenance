@@ -1,24 +1,25 @@
-package de.howaner.BukkitMaintenance.packet;
+package de.howaner.bukkitmaintenance.packet;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
-public class Packet1Ping extends Packet {
-    public long a; //Time
+public class Packet254ServerPing extends Packet {
+    public byte a;
 
     @Override
     public void read(DataInputStream stream) throws Exception {
-        this.a = stream.readLong();
+        this.a = stream.readByte();
+        this.a = (byte) 1;
     }
 
     @Override
     public void write(DataOutputStream stream) throws Exception {
-        stream.writeLong(this.a);
+        stream.writeByte(this.a);
     }
 
     @Override
     public int getPacketID() {
-        return 0x01;  //0x01 = 1
+        return 0xFE;     //0xFE = 254
     }
 
 }

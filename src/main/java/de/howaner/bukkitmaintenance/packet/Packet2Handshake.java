@@ -1,4 +1,4 @@
-package de.howaner.BukkitMaintenance.packet;
+package de.howaner.bukkitmaintenance.packet;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

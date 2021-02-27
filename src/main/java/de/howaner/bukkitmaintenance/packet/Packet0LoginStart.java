@@ -1,19 +1,19 @@
-package de.howaner.BukkitMaintenance.packet;
+package de.howaner.bukkitmaintenance.packet;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 /**
- * Status Response for 1.7
+ * Login Start Paket for 1.7
  *
  * @author franz
  */
-public class Packet0StatusResponse extends Packet {
-    public String a;
+public class Packet0LoginStart extends Packet {
+    public String a; //Playername
 
     @Override
     public void read(DataInputStream stream) throws Exception {
-        this.a = this.readVarIntString(stream, 32767);
+        this.a = this.readVarIntString(stream, 16);
     }
 
     @Override
