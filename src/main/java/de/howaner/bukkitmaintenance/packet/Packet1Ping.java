@@ -4,7 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 public class Packet1Ping extends Packet {
-    public long a; //Time
+
+    private long a; //Time
 
     @Override
     public void read(DataInputStream stream) throws Exception {
@@ -20,5 +21,4 @@ public class Packet1Ping extends Packet {
     public int getPacketID() {
         return 0x01;  //0x01 = 1
     }
-
 }

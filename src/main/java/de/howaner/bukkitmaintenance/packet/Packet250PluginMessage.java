@@ -1,12 +1,16 @@
 package de.howaner.bukkitmaintenance.packet;
 
+import lombok.Getter;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 public class Packet250PluginMessage extends Packet {
-    public String a; //Channel
-    public int b;    //Length
-    public byte[] c; //Data
+
+    @Getter
+    private String a; //Channel
+    private int b;    //Length
+    private byte[] c; //Data
 
     @Override
     public void read(DataInputStream stream) throws Exception {
@@ -30,5 +34,4 @@ public class Packet250PluginMessage extends Packet {
     public int getPacketID() {
         return 0xFA;  //0xFA = 250
     }
-
 }

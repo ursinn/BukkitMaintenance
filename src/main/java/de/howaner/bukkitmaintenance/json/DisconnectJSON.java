@@ -1,19 +1,16 @@
 package de.howaner.bukkitmaintenance.json;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Disconnect JSON Format in 1.7
  *
  * @author franz
  */
 public class DisconnectJSON {
+
+    @Getter
+    @Setter
     private String text;
-
-    public String getText() {
-        return this.text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
 }

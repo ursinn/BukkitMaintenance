@@ -1,10 +1,14 @@
 package de.howaner.bukkitmaintenance.packet;
 
+import lombok.Getter;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 public class Packet254ServerPing extends Packet {
-    public byte a;
+
+    @Getter
+    private byte a;
 
     @Override
     public void read(DataInputStream stream) throws Exception {
@@ -21,5 +25,4 @@ public class Packet254ServerPing extends Packet {
     public int getPacketID() {
         return 0xFE;     //0xFE = 254
     }
-
 }

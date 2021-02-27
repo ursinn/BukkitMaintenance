@@ -2,57 +2,74 @@ package de.howaner.bukkitmaintenance.config;
 
 import com.esotericsoftware.yamlbeans.YamlReader;
 import com.esotericsoftware.yamlbeans.YamlWriter;
+import lombok.Cleanup;
+import lombok.Getter;
+import lombok.var;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Config {
-    public static String BIND_ADDRESS = "0.0.0.0";
-    public static int BIND_PORT = 25565;
-    public static String KICK_MESSAGE = "§4Wartung! Kommen sie später wieder!";
-    public static String VERSION_NAME = "Wartung";
-    public static String MOTD = "Wir sind bald wieder für sie da!";
-    public static String MULTILINE_MOTD = "Wartungsmodus!\nBald können sie wieder rein!";
+
+    private Config() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    @Getter
+    private static String bindAddress = "0.0.0.0";
+
+    @Getter
+    private static int bindPort = 25565;
+
+    @Getter
+    private static String kickMessage = "§4Wartung! Kommen sie später wieder!";
+
+    @Getter
+    private static String versionName = "Wartung";
+
+    @Getter
+    private static String motd = "Wir sind bald wieder für sie da!";
+
+    @Getter
+    private static String multilineMotd = "Wartungsmodus!\nBald können sie wieder rein!";
 
     public static void loadConfig() {
         try {
-            YamlReader reader = new YamlReader(new FileReader("config.yml"));
+            @Cleanup YamlReader reader = new YamlReader(new FileReader("config.yml"));
 
-            Map map = (Map) reader.read();
-            BIND_ADDRESS = (String) map.get("BindAddress");
-            BIND_PORT = Integer.parseInt((String) map.get("BindPort"));
-            KICK_MESSAGE = (String) map.get("KickMessage");
-            VERSION_NAME = (String) map.get("Version");
-            MOTD = (String) map.get("Motd");
-            MULTILINE_MOTD = (String) map.get("MultilineMotd");
-
-            reader.close();
+            var map = (Map) reader.read();
+            bindAddress = (String) map.get("BindAddress");
+            bindPort = Integer.parseInt((String) map.get("BindPort"));
+            kickMessage = (String) map.get("KickMessage");
+            versionName = (String) map.get("Version");
+            motd = (String) map.get("Motd");
+            multilineMotd = (String) map.get("MultilineMotd");
         } catch (Exception e) {
-            System.err.println("Error while loading the Config: " + e.getMessage());
+            Logger.getGlobal().log(Level.SEVERE, () -> "Error while loading the Config: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     public static void saveConfig() {
         try {
-            YamlWriter writer = new YamlWriter(new FileWriter("config.yml"));
+            @Cleanup YamlWriter writer = new YamlWriter(new FileWriter("config.yml"));
 
-            Map map = new HashMap();
-            map.put("BindAddress", BIND_ADDRESS);
-            map.put("BindPort", BIND_PORT);
-            map.put("KickMessage", KICK_MESSAGE);
-            map.put("Version", VERSION_NAME);
-            map.put("Motd", MOTD);
-            map.put("MultilineMotd", MULTILINE_MOTD);
+            var map = new HashMap<String, String>();
+            map.put("BindAddress", bindAddress);
+            map.put("BindPort", String.valueOf(bindPort));
+            map.put("KickMessage", kickMessage);
+            map.put("Version", versionName);
+            map.put("Motd", motd);
+            map.put("MultilineMotd", multilineMotd);
 
             writer.write(map);
-            writer.close();
         } catch (Exception e) {
-            System.err.println("Error while saving the Config: " + e.getMessage());
+            Logger.getGlobal().log(Level.SEVERE, () -> "Error while saving the Config: " + e.getMessage());
             e.printStackTrace();
         }
     }
-
 }

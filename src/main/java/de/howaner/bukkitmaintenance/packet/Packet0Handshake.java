@@ -1,6 +1,7 @@
 package de.howaner.bukkitmaintenance.packet;
 
 import de.howaner.bukkitmaintenance.util.Varint;
+import lombok.Getter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,10 +12,13 @@ import java.io.DataOutputStream;
  * @author franz
  */
 public class Packet0Handshake extends Packet {
-    public int a; //Protocol Version
-    public String b; //Server Address
-    public int c; //Server Port
-    public int d; //Next State ( 1 = Status | 2 = Login )
+
+    private int a; //Protocol Version
+    private String b; //Server Address
+    private int c; //Server Port
+
+    @Getter
+    private int d; //Next State ( 1 = Status | 2 = Login )
 
     @Override
     public void read(DataInputStream stream) throws Exception {
@@ -36,5 +40,4 @@ public class Packet0Handshake extends Packet {
     public int getPacketID() {
         return 0x00;  //0x00 = 0
     }
-
 }

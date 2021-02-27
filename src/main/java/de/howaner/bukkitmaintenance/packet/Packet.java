@@ -52,5 +52,4 @@ public abstract class Packet {
             throw new Exception("The received string length is longer than maximum allowed (" + length + " > " + maxLength + ")");
         return s;
     }
-
 }

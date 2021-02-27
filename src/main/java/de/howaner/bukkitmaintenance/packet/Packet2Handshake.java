@@ -4,10 +4,11 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 public class Packet2Handshake extends Packet {
-    public byte a; //Protocol Version
-    public String b; //Username
-    public String c; //Server Host
-    public int d; //Server Port
+
+    private byte a; //Protocol Version
+    private String b; //Username
+    private String c; //Server Host
+    private int d; //Server Port
 
     @Override
     public void read(DataInputStream stream) throws Exception {
@@ -29,5 +30,4 @@ public class Packet2Handshake extends Packet {
     public int getPacketID() {
         return 0x02;  //0x02 = 2
     }
-
 }

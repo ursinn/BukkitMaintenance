@@ -10,5 +10,4 @@ public class PingUtil {
                 "\0" + players +
                 "\0" + slots;
     }
-
 }

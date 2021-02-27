@@ -1,5 +1,7 @@
 package de.howaner.bukkitmaintenance.packet;
 
+import lombok.Getter;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
@@ -9,7 +11,9 @@ import java.io.DataOutputStream;
  * @author franz
  */
 public class Packet0LoginStart extends Packet {
-    public String a; //Playername
+
+    @Getter
+    private String a; //Playername
 
     @Override
     public void read(DataInputStream stream) throws Exception {
@@ -25,5 +29,4 @@ public class Packet0LoginStart extends Packet {
     public int getPacketID() {
         return 0x00;  //0x00 = 0
     }
-
 }

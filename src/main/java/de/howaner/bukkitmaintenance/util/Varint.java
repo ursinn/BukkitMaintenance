@@ -6,6 +6,10 @@ import java.io.IOException;
 
 public class Varint {
 
+    private Varint() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static int readVarInt(DataInputStream in) throws IOException {
         int i = 0;
         int j = 0;
@@ -29,5 +33,4 @@ public class Varint {
             paramInt >>>= 7;
         }
     }
-
 }
