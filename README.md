@@ -18,5 +18,5 @@ Simple Maintenance Server for Minecraft
 
 ## License
 
-This project is under the MIT License. See the [LICENSE](https://github.com/ursinn/BukkitMaintenance/blob/main/LICENSE) file for the
-full license text.
+This project is under the MIT License. See the [LICENSE](https://github.com/ursinn/BukkitMaintenance/blob/main/LICENSE)
+file for the full license text.
