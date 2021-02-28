@@ -2,6 +2,10 @@ package de.howaner.bukkitmaintenance.util;
 
 public class PingUtil {
 
+    private PingUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String createPingString(int protocolVersion, String version, String motd, int players, int slots) {
         return "§1" +
                 "\0" + protocolVersion +

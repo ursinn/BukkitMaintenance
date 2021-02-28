@@ -28,8 +28,7 @@ public class ImageUtils {
         ImageIO.write(image, type, bos);
 
         byte[] imageBytes = bos.toByteArray();
-        String imageString = Base64.getEncoder().encodeToString(imageBytes);
 
-        return imageString;
+        return Base64.getEncoder().encodeToString(imageBytes);
     }
 }

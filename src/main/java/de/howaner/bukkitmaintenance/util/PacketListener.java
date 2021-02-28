@@ -10,6 +10,7 @@ import lombok.Cleanup;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
 
 public class PacketListener extends Thread {
 
-    public static Class[] packets = new Class[256];
+    protected static final Class[] packets = new Class[256];
 
     static {
         packets[0x00] = Packet0Handshake.class; //For 1.7
@@ -55,8 +56,9 @@ public class PacketListener extends Thread {
 
                     int packetID = Varint.readVarInt(reader);
                     Packet packet = getNewPacket(packetID);
-                    if (packet == null)
+                    if (packet == null) {
                         packet = getNewPacket(Varint.readVarInt(reader));
+                    }
 
                     if (packet == null) {
                         Logger.getGlobal().log(Level.INFO, () -> "Unkown Packet ID received: " + packetID);
@@ -96,13 +98,14 @@ public class PacketListener extends Thread {
             Packet0LoginStart loginPacket = new Packet0LoginStart();
             loginPacket.read(reader);
 
-            Logger.getGlobal().log(Level.INFO, "Received Login Packet from " + loginPacket.getA() + "!");
+            Logger.getGlobal().log(Level.INFO, () -> "Received Login Packet from " + loginPacket.getA() + "!");
             this.send17Packet(writer, dPacket);
         } else if (packet.getD() == 1) {
             Logger.getGlobal().log(Level.INFO, "Received Status Packet!");
             Varint.readVarInt(reader); //Packet Length
-            if (Varint.readVarInt(reader) != 0x00)
-                throw new Exception("The Client don't send a Status Request Packet!");
+            if (Varint.readVarInt(reader) != 0x00) {
+                throw new IOException("The Client don't send a Status Request Packet!");
+            }
 
             StatusResponseJSON.Version version = new StatusResponseJSON.Version();
             version.setName(Config.getVersionName());
@@ -126,7 +129,6 @@ public class PacketListener extends Thread {
             statusPacket.setA(MainServer.instance.getGson().toJson(json));
             this.send17Packet(writer, statusPacket);
 
-
             //Ping Time Packets
             Varint.readVarInt(reader); //Packet Size
             if (Varint.readVarInt(reader) != 0x01) return;
@@ -139,28 +141,33 @@ public class PacketListener extends Thread {
     public void a(Packet2Handshake packet, DataOutputStream writer) throws Exception {
         Logger.getGlobal().log(Level.INFO, "Received Login Packet!");
         Packet255Disconnect disconnectPacket = (Packet255Disconnect) getNewPacket(0xFF);
+        assert disconnectPacket != null;
         disconnectPacket.setA(Config.getKickMessage());
         this.sendPacket(writer, disconnectPacket);
     }
 
     public void a(Packet254ServerPing packet, DataInputStream reader, DataOutputStream writer) throws Exception {
         Logger.getGlobal().log(Level.INFO, "Received Status Packet!");
-        if (packet.getA() != (byte) 1) //Magical Byte Check
-            throw new Exception("Magic Byte isn't 1!");
+        //Magical Byte Check
+        if (packet.getA() != (byte) 1) {
+            throw new IOException("Magic Byte isn't 1!");
+        }
 
         //Is the next Packet a Pluginmessage?
-        if (reader.readUnsignedByte() != 0xFA)
-            throw new Exception("The received Packet isn't a Plugin Message.");
+        if (reader.readUnsignedByte() != 0xFA) {
+            throw new IOException("The received Packet isn't a Plugin Message.");
+        }
 
         Packet250PluginMessage pluginPacket = (Packet250PluginMessage) getNewPacket(0xFA);
+        assert pluginPacket != null;
         pluginPacket.read(reader);
 
-        if (!pluginPacket.getA().equals("MC|PingHost"))
-            throw new Exception("Bad channel: " + pluginPacket.getA());
+        if (!pluginPacket.getA().equals("MC|PingHost")) {
+            throw new IOException("Bad channel: " + pluginPacket.getA());
+        }
 
         Packet255Disconnect responsePacket = new Packet255Disconnect();
         responsePacket.setA(PingUtil.createPingString(0, Config.getVersionName(), Config.getMotd(), 0, 0));
-
         this.sendPacket(writer, responsePacket);
     }
 
