@@ -4,7 +4,6 @@ import com.esotericsoftware.yamlbeans.YamlReader;
 import com.esotericsoftware.yamlbeans.YamlWriter;
 import lombok.Cleanup;
 import lombok.Getter;
-import lombok.var;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -41,7 +40,7 @@ public class Config {
         try {
             @Cleanup YamlReader reader = new YamlReader(new FileReader("config.yml"));
 
-            var map = (Map) reader.read();
+            Map map = (Map) reader.read();
             bindAddress = (String) map.get("BindAddress");
             bindPort = Integer.parseInt((String) map.get("BindPort"));
             kickMessage = (String) map.get("KickMessage");
@@ -58,7 +57,7 @@ public class Config {
         try {
             @Cleanup YamlWriter writer = new YamlWriter(new FileWriter("config.yml"));
 
-            var map = new HashMap<String, String>();
+            HashMap<String, String> map = new HashMap<>();
             map.put("BindAddress", bindAddress);
             map.put("BindPort", String.valueOf(bindPort));
             map.put("KickMessage", kickMessage);
