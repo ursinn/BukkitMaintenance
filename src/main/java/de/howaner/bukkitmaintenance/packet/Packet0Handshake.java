@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 
 /**
  * Handshake for 1.7
@@ -21,7 +22,7 @@ public class Packet0Handshake extends Packet {
     private int d; //Next State ( 1 = Status | 2 = Login )
 
     @Override
-    public void read(DataInputStream stream) throws Exception {
+    public void read(DataInputStream stream) throws IOException {
         this.a = Varint.readVarInt(stream);
         this.b = this.readVarIntString(stream, 255);
         this.c = stream.readUnsignedShort();
@@ -29,7 +30,7 @@ public class Packet0Handshake extends Packet {
     }
 
     @Override
-    public void write(DataOutputStream stream) throws Exception {
+    public void write(DataOutputStream stream) throws IOException {
         Varint.writeVarInt(stream, this.a);
         this.writeVarIntString(stream, this.b);
         stream.writeShort(this.c);

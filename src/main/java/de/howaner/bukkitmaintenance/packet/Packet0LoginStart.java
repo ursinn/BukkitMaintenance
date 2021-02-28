@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 
 /**
  * Login Start Paket for 1.7
@@ -16,12 +17,12 @@ public class Packet0LoginStart extends Packet {
     private String a; //Playername
 
     @Override
-    public void read(DataInputStream stream) throws Exception {
+    public void read(DataInputStream stream) throws IOException {
         this.a = this.readVarIntString(stream, 16);
     }
 
     @Override
-    public void write(DataOutputStream stream) throws Exception {
+    public void write(DataOutputStream stream) throws IOException {
         this.writeVarIntString(stream, this.a);
     }
 

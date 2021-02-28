@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 
 public class Packet250PluginMessage extends Packet {
 
@@ -13,7 +14,7 @@ public class Packet250PluginMessage extends Packet {
     private byte[] c; //Data
 
     @Override
-    public void read(DataInputStream stream) throws Exception {
+    public void read(DataInputStream stream) throws IOException {
         this.a = this.readString(stream, 20);
         this.b = stream.readShort();
         if (this.b > 0 && this.b < 32767) {
@@ -23,7 +24,7 @@ public class Packet250PluginMessage extends Packet {
     }
 
     @Override
-    public void write(DataOutputStream stream) throws Exception {
+    public void write(DataOutputStream stream) throws IOException {
         this.writeString(stream, this.a);
         stream.writeShort((short) this.b);
         if (this.c != null)

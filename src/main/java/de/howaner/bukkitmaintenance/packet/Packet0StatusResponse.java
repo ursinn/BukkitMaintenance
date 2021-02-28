@@ -4,6 +4,7 @@ import lombok.Setter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 
 /**
  * Status Response for 1.7
@@ -16,12 +17,12 @@ public class Packet0StatusResponse extends Packet {
     private String a;
 
     @Override
-    public void read(DataInputStream stream) throws Exception {
+    public void read(DataInputStream stream) throws IOException {
         this.a = this.readVarIntString(stream, 32767);
     }
 
     @Override
-    public void write(DataOutputStream stream) throws Exception {
+    public void write(DataOutputStream stream) throws IOException {
         this.writeVarIntString(stream, this.a);
     }
 
