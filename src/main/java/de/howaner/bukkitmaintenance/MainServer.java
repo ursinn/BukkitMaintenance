@@ -57,11 +57,11 @@ public class MainServer {
     }
 
     public void extractLibs() {
-        if (!new File("lib/gson-2.2.4.jar").exists()) {
-            this.extractLib("/lib/gson-2.2.4.jar", new File("lib/gson-2.2.4.jar"));
+        if (!new File("lib/gson-2.8.6.jar").exists()) {
+            this.extractLib("/lib/gson-2.8.6.jar", new File("lib/gson-2.8.6.jar"));
         }
-        if (!new File("lib/yamlbeans-1.06.jar").exists()) {
-            this.extractLib("/lib/yamlbeans-1.06.jar", new File("lib/yamlbeans-1.06.jar"));
+        if (!new File("lib/yamlbeans-1.15.jar").exists()) {
+            this.extractLib("/lib/yamlbeans-1.15.jar", new File("lib/yamlbeans-1.15.jar"));
         }
     }
 
