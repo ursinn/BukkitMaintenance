@@ -1,6 +1,6 @@
 # BukkitMaintenance
 
-[![Build status (Jenkins)](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fci.ursinn.dev%2Fjob%2Fursinn%2Fjob%2FBukkitMaintenance%2Fjob%2Fdevelop%2F&label=Jenkins&logo=jenkins)](https://ci.ursinn.dev/job/ursinn/job/BukkitMaintenance)
+[![Build Status](https://ci.ursinn.dev/job/ursinn/job/BukkitMaintenance/job/develop/badge/icon)](https://ci.ursinn.dev/job/ursinn/job/BukkitMaintenance/job/develop/)
 [![Github last commit date](https://img.shields.io/github/last-commit/ursinn/BukkitMaintenance?label=Updated&logo=github)](https://github.com/ursinn/BukkitMaintenance/commits)
 [![Codecov](https://img.shields.io/codecov/c/gh/ursinn/BukkitMaintenance?label=Coverage&logo=codecov)](https://app.codecov.io/gh/ursinn/BukkitMaintenance)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/ursinn/BukkitMaintenance?label=Maintainability)](https://codeclimate.com/github/ursinn/BukkitMaintenance)
